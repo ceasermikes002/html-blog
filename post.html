@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+    <header>
+        <h1 id="post-title">Loading...</h1>
+    </header>
+    <main>
+        <p id="post-author-date"></p>
+        <img id="post-image" src="" alt="Featured Image" style="display: none;">
+        <article id="post-content"></article>
+    </main>
+
+    <script>
+        // Extract slug from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('slug');
+
+        if (slug) {
+            // Fetch blog posts from the JSON file
+            fetch('./data/posts.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Find the post with the matching slug
+                    const post = data.find(post => post.slug === slug);
+                    
+                    if (post) {
+                        // Populate the HTML with the post details
+                        document.getElementById('post-title').textContent = post.title;
+                        document.getElementById('post-author-date').textContent = `${post.date} by ${post.author}`;
+                        document.getElementById('post-image').src = post.featuredImage;
+                        document.getElementById('post-image').style.display = 'block'; // Show image after it loads
+                        document.getElementById('post-image').alt = post.title;
+                        document.getElementById('post-content').textContent = post.content;
+                    } else {
+                        // If no post is found, display an error message
+                        document.getElementById('post-title').textContent = "Post Not Found";
+                        document.getElementById('post-content').textContent = "The blog post you're looking for could not be found.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error loading blog post:", error);
+                    document.getElementById('post-title').textContent = "Error";
+                    document.getElementById('post-content').textContent = "There was an error loading the blog post.";
+                });
+        } else {
+            // If no slug is provided in the URL
+            document.getElementById('post-title').textContent = "Invalid Post";
+            document.getElementById('post-content').textContent = "No blog post specified.";
+        }
+    </script>
+</body>
+</html>

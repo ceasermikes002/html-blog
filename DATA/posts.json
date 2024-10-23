@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "title": "First Blog Post",
+      "slug": "first-blog-post",
+      "date": "2024-10-23",
+      "content": "This is the content of the first blog post.",
+      "author": "M.A",
+      "featuredImage": "path/to/image1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Second Blog Post",
+      "slug": "second-blog-post",
+      "date": "2024-10-24",
+      "content": "This is the content of the second blog post.",
+      "author": "MOBY MIKES",
+      "featuredImage": "path/to/image2.jpg"
+    }
+  ]
+  
