@@ -16,6 +16,15 @@
       "content": "This is the content of the second blog post.",
       "author": "MOBY MIKES",
       "featuredImage": "path/to/image2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Second 2",
+      "slug": "second-blog-post-2",
+      "date": "2024-10-24",
+      "content": "This is the content of the second blog post.",
+      "author": "MOBY MIKES",
+      "featuredImage": "path/to/image2.jpg"
     }
   ]
   
